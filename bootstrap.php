@@ -26,7 +26,6 @@ $annotationDriver = new Doctrine\ORM\Mapping\Driver\AnnotationDriver(
 $driverChain = new Doctrine\ORM\Mapping\Driver\DriverChain();
 $driverChain->addDriver($annotationDriver, 'Code');
 
-
 $config = new Doctrine\ORM\Configuration;
 $config->setProxyDir('/tmp');
 $config->setProxyNamespace('Proxy');
@@ -38,7 +37,6 @@ $config->setMetadataCacheImpl($cache);
 $config->setQueryCacheImpl($cache);
 
 AnnotationRegistry::registerFile(__DIR__. DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'doctrine' . DIRECTORY_SEPARATOR . 'orm' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'Doctrine' . DIRECTORY_SEPARATOR . 'ORM' . DIRECTORY_SEPARATOR . 'Mapping' . DIRECTORY_SEPARATOR . 'Driver' . DIRECTORY_SEPARATOR . 'DoctrineAnnotations.php');
-
 
 $evm = new Doctrine\Common\EventManager();
 
@@ -56,8 +54,6 @@ $em = EntityManager::create(
     $evm
 );
 
-
-
 $app = new Silex\Application();
 $app['debug'] = true;
 
@@ -68,3 +64,20 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
 return $app;
+
+
+
+//use Silex\Provider\SecurityServiceProvider;
+//use Silex\Provider\SessionServiceProvider;
+//
+//
+//
+//$driverChain = new Doctrine\ORM\Mapping\Driver\DriverChain();
+//// load superclass metadata mapping only, into driver chain
+//// also registers Gedmo annotations.NOTE: you can personalize it
+//Gedmo\DoctrineExtensions::registerAbstractMappingIntoDriverChainORM(
+//    $driverChain, // our metadata driver chain, to hook into
+//    $cachedAnnotationReader // our cached annotation reader
+//);
+
+
