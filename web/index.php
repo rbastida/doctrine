@@ -23,6 +23,7 @@ $app['clienteService'] = function() use ($em) {
     $clienteEntity = new Code\Sistema\Entity\Cliente();
     $clienteMapper = new Code\Sistema\Mapper\ClienteMapper($em);
     $clienteService = new Code\Sistema\Service\ClienteService($clienteEntity, $clienteMapper);
+    
     return $clienteService;
 };
 

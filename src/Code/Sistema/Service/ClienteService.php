@@ -1,16 +1,33 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace Code\Sistema\Service;
 
-/**
- * Description of ClienteService
- *
- * @author Roger
- */
+use Code\Sistema\Entity\Cliente;
+use Code\Sistema\Mapper\ClienteMapper;
+
+
 class ClienteService {
-    //put your code here
+
+    private $cliente;
+    private $clienteMapper;
+    
+    public function __construct(Cliente $cliente, ClienteMapper $clienteMapper) {
+        
+        $this->cliente = $cliente;
+        $this->clienteMapper = $clienteMapper;
+        
+    }
+    
+    public function insert(array $data) {
+        
+        $clienteEntity = $this->cliente;
+        $clienteEntity->setNome($data['nome']);
+        $clienteEntity->setEmail($data['email']);
+        
+        $mapper = $this->clienteMapper;
+        
+        $result = $mapper->insert($clienteEntity);
+        
+        return $result;
+    }
 }
