@@ -9,12 +9,9 @@
     "config": {
         "bin-dir": "bin/"
     },
-    
     "autoload": {
         "psr-4": {
-            "Code\\Sistema": "src/Code/Sistema"
+            "Code\\Sistema\\": "src/Code/Sistema"
         }
     }
 }
-
-        
