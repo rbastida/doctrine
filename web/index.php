@@ -7,16 +7,13 @@
 //    É sabido que não foi apresentado ainda a forma de como alterar e remover o registro e então é nesse ponto que está o principal desafio dessa fase do projeto.
 //
 //    Boa sorte! =)
-require_once __DIR__ .'/../bootstrap.php';
-require_once __DIR__ .'/../src/Code/Sistema/Entity/Cliente.php';
-require_once __DIR__ .'/../src/Code/Sistema/Mapper/ClienteMapper.php';
-require_once __DIR__ .'/../src/Code/Sistema/Service/ClienteService.php';
 
+use Symfony\Component\HttpFoundation\Request;
 use Code\Sistema\Service\ClienteService;
 use Code\Sistema\Entity\Cliente;
 use Code\Sistema\Mapper\ClienteMapper;
 
-use Symfony\Component\HttpFoundation\Request;
+$app = require_once __DIR__ .'/../bootstrap.php';
 
 $app['clienteService'] = function() use ($em) {
     
@@ -37,7 +34,7 @@ $app->get("/api/clientes", function() use ($app) {
     return $app->json($dados);
 });
 
-$app->get("/api/clientes{id}", function($id) use ($app) {
+$app->get("/api/clientes/{id}", function($id) use ($app) {
     $dados = $app['clienteService']->find($id);
     return $app->json($dados);
 });
