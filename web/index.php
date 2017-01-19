@@ -17,9 +17,11 @@ $app = require_once __DIR__ .'/../bootstrap.php';
 
 $app['clienteService'] = function() use ($em) {
     
-    $clienteEntity = new Code\Sistema\Entity\Cliente();
-    $clienteMapper = new Code\Sistema\Mapper\ClienteMapper($em);
-    $clienteService = new Code\Sistema\Service\ClienteService($clienteEntity, $clienteMapper);
+//    $clienteEntity = new Code\Sistema\Entity\Cliente();
+//    $clienteMapper = new Code\Sistema\Mapper\ClienteMapper($em);
+//    $clienteService = new Code\Sistema\Service\ClienteService($clienteEntity, $clienteMapper);
+    
+    $clienteService = new Code\Sistema\Service\ClienteService($em);
     
     return $clienteService;
 };
